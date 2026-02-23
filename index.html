@@ -22,7 +22,18 @@
     --shadow-card: 0 10px 40px rgba(45,48,71,0.10);
   }
 
+  html { scroll-behavior: smooth; }
+
+  section, footer {
+    scroll-margin-top: 80px;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* Offset for fixed navbar when scrolling to sections */
+  section[id], footer[id] {
+    scroll-margin-top: 80px;
+  }
 
   body {
     font-family: 'Nunito', sans-serif;
@@ -73,6 +84,8 @@
   }
   .nav-links a:hover { color: var(--sky); }
   .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--sky); }
+  .nav-links a.active::after { transform: scaleX(1); }
 
   .nav-actions { display: flex; gap: 12px; align-items: center; }
   .btn-login {
@@ -511,16 +524,16 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav>
-  <div class="logo">
+  <a href="#home" class="logo" style="text-decoration:none;">
     <div class="logo-icon">🌟</div>
     Bright Future Kids
-  </div>
+  </a>
   <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Courses</a></li>
-    <li><a href="#">Activities</a></li>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
     <button class="btn-login">Login</button>
@@ -529,7 +542,7 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
+<section class="hero" id="home">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
@@ -545,8 +558,8 @@
     <h1>Learn, Play &amp; Grow with <em>Bright Future!</em></h1>
     <p>Fun interactive courses for curious young minds. Explore, discover and unlock your child's full potential with joyful learning experiences.</p>
     <div class="hero-btns">
-      <button class="btn-primary">🚀 Start Learning</button>
-      <button class="btn-secondary">📖 Explore Courses</button>
+      <button class="btn-primary" onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">🚀 Start Learning</button>
+      <button class="btn-secondary" onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">📖 Explore Courses</button>
     </div>
     <div class="hero-stats">
       <div class="stat"><strong>20K+</strong><span>Happy Learners</span></div>
@@ -582,7 +595,7 @@
 </section>
 
 <!-- ===== FEATURES ===== -->
-<section class="features">
+<section class="features" id="activities">
   <div class="section-header reveal">
     <div class="section-tag">✨ Why Choose Us</div>
     <h2>Everything a Young Learner Needs</h2>
@@ -613,7 +626,7 @@
 </section>
 
 <!-- ===== COURSES ===== -->
-<section class="courses">
+<section class="courses" id="courses">
   <div class="section-header reveal">
     <div class="section-tag">📚 Our Courses</div>
     <h2>Explore Amazing Learning Worlds</h2>
@@ -676,7 +689,7 @@
 </section>
 
 <!-- ===== TESTIMONIALS ===== -->
-<section class="testimonials">
+<section class="testimonials" id="about">
   <div class="section-header reveal">
     <div class="section-tag">💬 What Parents Say</div>
     <h2>Trusted by Thousands of Families</h2>
@@ -728,11 +741,11 @@
     <h2>🌟 Ready to Start the Adventure?</h2>
     <p>Join 20,000+ children learning, growing and having fun every day.</p>
   </div>
-  <button class="btn-cta">🚀 Get Started Free Today</button>
+  <button class="btn-cta" onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">🚀 Get Started Free Today</button>
 </div>
 
 <!-- ===== FOOTER ===== -->
-<footer>
+<footer id="contact">
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="logo" style="-webkit-text-fill-color: white; background: none; color: white;">🌟 Bright Future Kids</div>
@@ -747,31 +760,31 @@
     <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Courses</a></li>
-        <li><a href="#">Live Classes</a></li>
-        <li><a href="#">Activities</a></li>
-        <li><a href="#">Blog & Resources</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#features">Live Classes</a></li>
+        <li><a href="#features">Activities</a></li>
+        <li><a href="#about">Blog & Resources</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Our Teachers</a></li>
-        <li><a href="#">For Schools</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#about">Our Teachers</a></li>
+        <li><a href="#features">For Schools</a></li>
+        <li><a href="#contact">Careers</a></li>
+        <li><a href="#contact">Privacy Policy</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact Us</h4>
       <ul>
-        <li><a href="#">📧 hello@brightfuturekids.com</a></li>
-        <li><a href="#">📞 +1 (800) 555-KIDS</a></li>
-        <li><a href="#">📍 123 Learning Lane, EduCity</a></li>
-        <li><a href="#">💬 Live Chat Support</a></li>
-        <li><a href="#">📅 Book a Demo</a></li>
+        <li><a href="mailto:hello@brightfuturekids.com">📧 hello@brightfuturekids.com</a></li>
+        <li><a href="tel:+18005554537">📞 +1 (800) 555-KIDS</a></li>
+        <li><a href="#contact">📍 123 Learning Lane, EduCity</a></li>
+        <li><a href="#contact">💬 Live Chat Support</a></li>
+        <li><a href="#contact">📅 Book a Demo</a></li>
       </ul>
     </div>
   </div>
@@ -800,6 +813,34 @@
   document.querySelectorAll('.features-grid .feature-card, .courses-grid .course-card, .testi-grid .testi-card').forEach((el, i) => {
     el.style.transitionDelay = (i % 4) * 0.12 + 's';
   });
+
+  // ── Active nav link on scroll (scroll spy) ──
+  const sections = [
+    { id: 'home',         link: '[href="#home"]' },
+    { id: 'features',     link: '[href="#features"]' },
+    { id: 'courses',      link: '[href="#courses"]' },
+    { id: 'about',        link: '[href="#about"]' },
+    { id: 'contact',      link: '[href="#contact"]' },
+  ];
+
+  const navHeight = document.querySelector('nav').offsetHeight;
+
+  function updateActiveLink() {
+    let current = 'home';
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top;
+        if (top <= navHeight + 40) current = id;
+      }
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const activeLink = document.querySelector(`.nav-links a[href="#${current}"]`);
+    if (activeLink) activeLink.classList.add('active');
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  updateActiveLink(); // run once on load
 </script>
 </body>
 </html>
